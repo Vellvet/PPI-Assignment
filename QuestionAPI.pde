@@ -7,7 +7,7 @@ public class QuestionAPI
     {
         API API = new API();
         String APIResult = API.getAPIResult();
-
+        
         return APIResult;
     }
     public String find(String APIResult, String keyword, int space)
@@ -42,15 +42,15 @@ public class QuestionAPI
     }
     public String getQuestion(String APIResult)
     {
-        return find(APIResult,"question",11);
+        return find(APIResult,"question",11).replace("&quot;","\"").replace("&shy","-").replace("\u0151","").replace("&#039;","'").replace("&ldquo;","\"").replace("&rdquo;","\"").replace("&amp;","&");
     }
     public String getCorrectAnswer(String APIResult)
     {
-        return find(APIResult,"correct_answer",17);
+        return find(APIResult,"correct_answer",17).replace("&quot","\"").replace("&shy","-").replace("\u0151","").replace("&#039;","'").replace("&ldquo;","\"").replace("&rdquo;","\"").replace("&amp;","&");
     }
     public String[] getIncorrectAnswers(String APIResult)
     {
-        String InccorectArray = findArray(APIResult,"incorrect_answers",21);
+        String InccorectArray = findArray(APIResult,"incorrect_answers",21).replace("&quot","\"").replace("&shy","-").replace("\u0151","").replace("&#039;","'").replace("&ldquo;","\"").replace("&rdquo;","\"").replace("&amp;","&");
         String ArrayAnswer[] = InccorectArray.split(",");
         return ArrayAnswer;
     }
